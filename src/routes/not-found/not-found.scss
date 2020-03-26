@@ -1,0 +1,14 @@
+@import '../../styles/variables';
+
+.sorry-message {
+  font-size: 30px;
+  font-weight: 200;
+}
+
+.navigation-link {
+  color: $green-light;
+
+  &:hover {
+    color: $green-dark;
+  }
+}
