@@ -1,0 +1,16 @@
+@import '~bootstrap/scss/bootstrap';
+@import './variables';
+
+// Override the text-decoration for <a> tag
+a {
+  text-decoration: none !important;
+}
+// Override some of the bootstrap's button styles.
+.btn {
+  &.btn-success {
+    background-color: $green-light;
+    &:hover {
+      background-color: $green-dark;
+    }
+  }
+}

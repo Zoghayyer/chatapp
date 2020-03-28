@@ -1,0 +1,13 @@
+@import '../../styles/variables';
+
+#login-form {
+  .button-input-dimension {
+    width: 30em;
+    height: 50px;
+  }
+
+  .invalid-user {
+    margin-top: 3px;
+    font-size: 12px;
+  }
+}
