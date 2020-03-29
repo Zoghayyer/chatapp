@@ -1,34 +1,41 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Selectors from '../../../../store/selectors';
 import { uiChatRoomsRoomKey } from '../../../../modules/ui';
+import { chatAccountUserId } from '../../../../modules/chat-account';
+import { chatRoomsByKeyRoomMessages } from '../../../../modules/chat-rooms';
 import RoomView from './room-view';
 
 const mapStateToProps = (state) => {
   const roomKey = uiChatRoomsRoomKey(state);
   return {
-    adminMessages: Selectors.chatRoomsByKeyRoomMessagesAdmin(state, roomKey),
-    othersMessages: Selectors.chatRoomsByKeyRoomMessagesOthers(state, roomKey)
+    roomMessages: chatRoomsByKeyRoomMessages(state, roomKey),
+    chatAccountUserId: chatAccountUserId(state)
   };
 };
 
 class RoomContainer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.scrollRef = React.createRef();
+  }
+
+  scrollToBottom = ()  => {
+    this.scrollRef.current.scrollTop = this.scrollRef.current.scrollHeight;
+  };
+
+  componentDidMount = () => this.scrollToBottom();
+
+  componentDidUpdate = () => this.scrollToBottom();
+
   render = () => (
-    <div>
-      {console.log('others', this.props.othersMessages)}
-      {console.log('Admin', this.props.adminMessages)}
-      <RoomView
-        adminMessages={this.props.adminMessages}
-        othersMessages={this.props.othersMessages}
-      />
-    </div>
-  );
+    <RoomView
+      roomMessages={this.props.roomMessages}
+      chatAccountUserId={this.props.chatAccountUserId}
+      scrollRef={this.scrollRef}
+    />
+  )
 }
 
-RoomContainer.propTypes = {
-  adminMessages: PropTypes.array.isRequired,
-  othersMessages: PropTypes.array.isRequired
-};
 
 export default connect(mapStateToProps)(RoomContainer);

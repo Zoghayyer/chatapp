@@ -2,5 +2,51 @@
 
 .sidebar {
   min-height: 100vh;
-  background-color: $green-light;
+  background-color: $red-light;
+
+  .link-color {
+    color: $white !important;
+  }
+
+  ul {
+    li:hover {
+      background-color: $nutmeg;
+    }
+  }
+
+  .selectedRoom {
+    background-color: $nutmeg;
+  }
+
+  ul li a {
+    margin: 9px 15px;
+  }
+
+  .username {
+    font-size: 24px;
+    color: $white;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 30px;
+
+    .login-time {
+      margin-top: 2px;
+      font-size: 12px;
+    }
+  }
+
+  .logout {
+    position: relative;
+    top: 550px;
+    left: 15px;
+    font-size: 16px;
+
+    a {
+      color: white;
+
+      &:hover {
+        color: $nutmeg;
+      }
+    }
+  }
 }

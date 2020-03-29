@@ -8,7 +8,7 @@ import Login from '../../routes/login';
 import NotFound from '../../routes/not-found';
 import Rooms from '../../routes/rooms';
 
-const CoreView = () => (
+const CoreView = (props) => (
   <div id="app-content" className="container-fluid">
     <Switch>
       <Route

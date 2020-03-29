@@ -18,7 +18,7 @@ const AddMessageFormView = ({ handleMessageChange, handleSubmit, message }) => (
           />
         </div>
         <div className="col-md-2 d-flex justify-content-center">
-          <Button type="submit" theme="success send-button">Send</Button>
+          <Button type="submit" theme="danger send-button">Send</Button>
         </div>
       </div>
     </form>

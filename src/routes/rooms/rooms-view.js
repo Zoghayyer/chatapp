@@ -7,10 +7,10 @@ import Footer from '../../components/footer';
 import Room from './components/room';
 import Welcome from './components/welcome';
 
-const RoomsView = ({ chatRooms, roomKey }) => (
+const RoomsView = ({ roomKey }) => (
   <div className="row">
     <div className="col-12 col-md-2">
-      <Sidebar chatRooms={chatRooms} />
+      <Sidebar />
     </div>
     <div className="col-md-10 m-0 p-0">
       {
@@ -31,7 +31,6 @@ const RoomsView = ({ chatRooms, roomKey }) => (
 );
 
 RoomsView.propTypes = {
-  chatRooms: PropTypes.array.isRequired,
   roomKey: PropTypes.string.isRequired
 };
 

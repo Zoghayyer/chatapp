@@ -27,10 +27,10 @@ const LoginView = ({ handleSubmit, handleUsernameChange, username, invalidLogin 
       <div>
       <Button
         type="submit"
-        theme="success"
+        theme="danger"
         className="button-input-dimension"
       >
-        <span>Join EarnUp Chat</span>
+        <span>Join EarnUp Chat!</span>
       </Button>
       </div>
     </form>

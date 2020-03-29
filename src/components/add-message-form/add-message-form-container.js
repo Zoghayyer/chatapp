@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   roomMessagesRequestGet,
-  roomMessagesRequestPost
+  roomMessagesRequestPost,
+  roomsStale
 } from '../../modules/chat-rooms';
 import {
-  chatAccountUsername
+  chatAccountUsername,
+  chatAccountUserId
 } from '../../modules/chat-account';
 import {
   uiChatRoomsRoomKey
@@ -15,12 +17,14 @@ import AddMessageFormView from './add-message-form-view';
 
 const mapDisptachToProps = {
   roomMessagesRequestGet,
-  roomMessagesRequestPost
+  roomMessagesRequestPost,
+  roomsStale
 };
 
 const mapStateToProps = (state) => ({
+  chatAccountUserId: chatAccountUserId(state),
   chatAccountUsername: chatAccountUsername(state),
-  uiChatRoomsRoomKey: uiChatRoomsRoomKey(state)
+  uiChatRoomsRoomKey: uiChatRoomsRoomKey(state),
 });
 
 class AddMessageFormContainer extends React.Component {
@@ -41,20 +45,16 @@ class AddMessageFormContainer extends React.Component {
     const { message } = this.state;
     const messagePayload = {
       name: this.props.chatAccountUsername,
+      userId: this.props.chatAccountUserId,
       message
     };
     const roomKey = this.props.uiChatRoomsRoomKey;
 
     await this.props.roomMessagesRequestPost(roomKey, messagePayload);
-    this.props.roomMessagesRequestGet(roomKey);
+    this.props.roomsStale(true);
     // Clear input field after adding a message
     this.setState({ message: '' });
   };
-
-  componentDidUpdate = () => {
-    const roomKey = this.props.uiChatRoomsRoomKey;
-    this.props.roomMessagesRequestGet(roomKey);
-  }
 
   render = () => (
     <AddMessageFormView
@@ -66,9 +66,11 @@ class AddMessageFormContainer extends React.Component {
 }
 
 AddMessageFormContainer.propTypes = {
+  chatAccountUserId: PropTypes.string.isRequired,
   chatAccountUsername: PropTypes.string.isRequired,
   roomMessagesRequestGet: PropTypes.func.isRequired,
   roomMessagesRequestPost: PropTypes.func.isRequired,
+  roomsStale: PropTypes.func.isRequired,
   uiChatRoomsRoomKey: PropTypes.string.isRequired
 };
 

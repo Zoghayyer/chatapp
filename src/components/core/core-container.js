@@ -1,8 +1,5 @@
-import React from 'react';
 import CoreView from './core-view';
+import Authorize from '../authorize';
+import { withRouter } from 'react-router-dom';
 
-const CoreContainer = () => (
-  <CoreView />
-);
-
-export default CoreContainer;
+export default withRouter(Authorize(CoreView));

@@ -5,7 +5,7 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 import makeRootReducer from './reducers';
-// eslint-disable-next-line no-shadow
+
 export const createStoreFactory = ({
   applyMiddleware,
   compose,
@@ -26,7 +26,7 @@ export const createStoreFactory = ({
     enhancers.push(devToolsExtension());
   }
   // ======================================================
-  // Store Instantiation and HMR Setup
+  // Store Instantiation
   // ======================================================
   const store = reduxCreateStore(
     makeRootReducer(),
@@ -39,6 +39,7 @@ export const createStoreFactory = ({
 
   return store;
 };
+
 const store = createStoreFactory({
   applyMiddleware,
   compose,
@@ -46,4 +47,5 @@ const store = createStoreFactory({
   thunk,
   makeRootReducer
 })();
+
 export default store;

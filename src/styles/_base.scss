@@ -7,10 +7,10 @@ a {
 }
 // Override some of the bootstrap's button styles.
 .btn {
-  &.btn-success {
-    background-color: $green-light;
+  &.btn-danger {
+    background-color: $red-light;
     &:hover {
-      background-color: $green-dark;
+      background-color: $red-dark;
     }
   }
 }

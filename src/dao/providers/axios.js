@@ -1,5 +1,6 @@
 import axios from 'axios';
 import environmentConfig from '../../static/config/config';
+
 // ------------------------------------
 // Environment api base urls
 // ------------------------------------
