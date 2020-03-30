@@ -1,5 +1,5 @@
 ## Messages API
- - http://localhost:8080/api/rooms/0/messages
+ - http://localhost:5000/api/rooms/0/messages
   - `GET /rooms/<id>/messages`
     - Response shape:
     ```
@@ -24,7 +24,7 @@
 
 
 ## RoomsList API
-- http://localhost:8080/api/rooms
+- http://localhost:5000/api/rooms
   - `GET /rooms`
     - Response shape:
     ```
@@ -38,7 +38,7 @@
 
 
 ## RoomsDetail API
-- http://localhost:8080/api/rooms/0
+- http://localhost:5000/api/rooms/0
   - `GET /rooms/<id>`
     - Response shape:
     ```

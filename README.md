@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Requirements:
+
+You need your node version to be >= v10. Preferably `v10.15.3`
+You need your npm version to be >= 6.4.1. Preferably `6.4.1`
+
 ## Getting Started:
 
 First, clone or download:
