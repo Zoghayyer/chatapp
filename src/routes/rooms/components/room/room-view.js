@@ -12,7 +12,7 @@ const RoomView = ({ chatAccountUserId, roomMessages, scrollRef }) => {
   });
 
   return (
-    <div className="ow room-section" ref={scrollRef}>
+    <div className="row room-section" ref={scrollRef}>
       <div className="col-md-12">
         {messages}
       </div>
