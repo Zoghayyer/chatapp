@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './footer.scss';
 
-const FooterView = ({ children }) => (
+const Footer = ({ children }) => (
   <div className="footer d-flex justify-content-center align-items-center">
     <div className="w-100 mt-3">
       {children}
@@ -10,8 +10,8 @@ const FooterView = ({ children }) => (
   </div>
 );
 
-FooterView.propTypes = {
+Footer.propTypes = {
   children: PropTypes.any.isRequired
 };
 
-export default FooterView;
+export default Footer;

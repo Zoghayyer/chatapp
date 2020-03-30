@@ -1,18 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AdminMessages from './admin-messages';
-import OthersMessages from './others-messages';
+import AdminMessage from './admin-message';
+import NonAdminMessage from './non-admin-message';
+import './room.scss';
 
-const RoomView = ({ othersMessages, adminMessages }) => (
-  <div className="row">
-    <OthersMessages messages={othersMessages} />
-    <AdminMessages messages={adminMessages} />
-  </div>
-);
+const RoomView = ({ chatAccountUserId, roomMessages, scrollRef }) => {
+  const messages = roomMessages.map(({message, name, userId}, i) => {
+    return chatAccountUserId === userId
+      ? <AdminMessage key={`${userId}-${i}-${name}`}  message={message} />
+      : <NonAdminMessage key={`${i}-${name}`} name={name} message={message} /> 
+  });
+
+  return (
+    <div className="ow room-section" ref={scrollRef}>
+      <div className="col-md-12">
+        {messages}
+      </div>
+    </div>
+  );
+}
 
 RoomView.propTypes = {
-  adminMessages: PropTypes.array.isRequired,
-  othersMessages: PropTypes.array.isRequired
+  roomMessages: PropTypes.array.isRequired,
+  chatAccountUserId: PropTypes.string.isRequired
 };
 
 export default RoomView;

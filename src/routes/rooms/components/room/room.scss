@@ -1,0 +1,34 @@
+@import '../../../../styles/variables';
+
+.room-section {
+  display: flex;
+  align-items: flex-end;
+  height: calc(100vh - 207px);
+  background-color: $gray-light;
+  overflow-y: auto;
+  padding-top: 25px;
+
+  .message-container {
+    display: inline-block;
+    display: inline-block;
+    border-radius: 25px;
+    padding: 15px;
+  }
+  
+  .message-container-right {
+    @extend .message-container;
+  
+    background-color: $red-light;
+    color: $white;
+  }
+  
+  .message-container-left {
+    @extend .message-container;
+    margin-bottom: 3px;
+    background-color: $white;
+  }
+  
+  .user-color {
+    color: $gray-dark;
+  }
+}

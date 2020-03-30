@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import {
   chatAccountUsernameUpdate
 } from '../../modules/chat-account';
+import Session from '../../lib/session';
 import LoginView from './login-view';
+import uuid from 'uuid';
 
 const mapDispatchToProps = {
   chatAccountUsernameUpdate
@@ -17,7 +19,7 @@ class LoginContainer extends React.Component {
   };
 
   validateUsername = (username = '') => (
-    !!username.length && username.replace(/[^a-zA-Z0-9]/g, '').length === username.length
+    !!username.length && username.replace(/[^a-zA-Z0-9 ' ']/g, '').length === username.length
   );
 
   handleSubmit = (event) => {
@@ -25,7 +27,17 @@ class LoginContainer extends React.Component {
     const { username =  ''} = this.state;
 
     if (this.validateUsername(username)) {
-      this.props.chatAccountUsernameUpdate({username});
+      const generateUniqueId = uuid.v4();
+      const loginTime = Date.now();
+      const userDetails = {
+        username,
+        id: generateUniqueId,
+        loginTime
+      };
+      // Store username in redux
+      this.props.chatAccountUsernameUpdate(userDetails);
+      // Store username in the window.sessionStorage
+      Session.setItem('user', JSON.stringify(userDetails));
       // Redirect users to the design chat page by default
       this.props.history.push('/rooms');
       return;

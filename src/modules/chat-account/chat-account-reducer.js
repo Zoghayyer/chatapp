@@ -1,11 +1,17 @@
 import {
   CHAT_ACCOUNT_USERNAME_UPDATE
 } from './chat-account-action-types';
+import Session from '../../lib/session';
+
+const user = JSON.parse(Session.getItem('user')) || {};
+
 // ------------------------------------
 // Initial State
 // ------------------------------------
 export const initialState = {
-  username: ''
+  username: user.username || '',
+  id: user.id || '',
+  loginTime: user.loginTime || 0
 };
 
 // ------------------------------------
@@ -14,9 +20,12 @@ export const initialState = {
 const ACTION_HANDLERS = () => ({
   [CHAT_ACCOUNT_USERNAME_UPDATE]: (state, { payload }) => ({
     ...state,
-    username: payload.username
+    username: payload.username,
+    id: payload.id,
+    loginTime: payload.loginTime
   })
  });
+
 // ------------------------------------
 // Reducer
 // ------------------------------------

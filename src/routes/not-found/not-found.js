@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import notFoundImage from '../../static/images/not-found.jpg';
 import './not-found.scss';
 
-const NotFoundView = ({ isUserLoggedIn }) => (
+const NotFound = ({ isUserLoggedIn }) => (
   <div className="d-flex flex-column align-items-center">
     <div className="not-found-image mb-4">
       <img src={notFoundImage} alt="Not found" />
@@ -13,18 +12,11 @@ const NotFoundView = ({ isUserLoggedIn }) => (
       <span className="sorry-message">Sorry! We couldn't find the page you were looking for.</span>
     </div>
     <div>
-      {
-        !isUserLoggedIn &&
-        <Link to="/" className="navigation-link">
-          <span>Go to the Login page</span>
-        </Link>
-      }
+      <Link to="/rooms" className="navigation-link">
+        <span>Go to the main chat rooms</span>
+      </Link>
     </div>
   </div>
 );
 
-NotFoundView.propTypes = {
-  isUserLoggedIn: PropTypes.bool.isRequired
-};
-
-export default NotFoundView;
+export default NotFound;

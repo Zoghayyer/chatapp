@@ -3,30 +3,47 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './sidebar.scss';
 
-const SidebarView = ({ chatRooms }) => {
+const SidebarView = ({ chatRooms, currentUserLoginTime, handleFocus, selectedRoom, username }) => {
   const chatRoomsList = chatRooms.map(({name, id}, index) => (
-    <li key={`${name}-${id}-${index}`} className="nav-item">
-      <Link to={`/rooms/${id}`} className="nav-link pl-0 text-nowrap">
+    <li key={`${name}-${id}-${index}`} className={`nav-item ${selectedRoom === name ? 'selectedRoom' : ''}`}>
+      <Link
+        to={`/rooms/${id}`}
+        data-value={name}
+        className="nav-link pl-0 text-nowrap link-color"
+      >
         <span>{name}</span>
       </Link>
     </li>
   ));
 
   return (
-    <aside className="col-12 col-md-2 p-0 fixed-top sidebar">
-        <nav className="navbar navbar-expand flex-md-column flex-row align-items-start py-2">
-            <div className="collapse navbar-collapse align-items-start">
-                <ul className="flex-md-column flex-row navbar-nav w-100 justify-content-between">
-                  {chatRoomsList}
-                </ul>
-            </div>
-        </nav>
-    </aside>
+    <div className="col-4 col-md-2 p-0 fixed-top sidebar">
+      <div className="username">
+        <span>{username}</span>
+        {
+          currentUserLoginTime > 0 &&
+          <div className="login-time">Online for {currentUserLoginTime} minutes</div>
+        }
+      </div>
+      <ul
+        onFocus={handleFocus}
+        className="flex-md-column flex-column navbar-nav w-100 justify-content-between"
+      >
+        {chatRoomsList}
+      </ul>
+      <div className="logout">
+        <Link to="/">Logout</Link>
+      </div>
+    </div>
   );
 };
 
 SidebarView.propTypes = {
-  chatRooms: PropTypes.array.isRequired
+  chatRooms: PropTypes.array.isRequired,
+  username: PropTypes.string.isRequired,
+  handleFocus: PropTypes.func.isRequired,
+  selectedRoom: PropTypes.string.isRequired,
+  currentUserLoginTime: PropTypes.number.isRequired
 };
 
 export default SidebarView;
