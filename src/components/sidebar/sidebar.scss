@@ -34,19 +34,4 @@
       font-size: 12px;
     }
   }
-
-  .logout {
-    position: relative;
-    top: 550px;
-    left: 15px;
-    font-size: 16px;
-
-    a {
-      color: white;
-
-      &:hover {
-        color: $nutmeg;
-      }
-    }
-  }
 }
