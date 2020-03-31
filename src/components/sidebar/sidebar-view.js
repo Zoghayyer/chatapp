@@ -31,9 +31,6 @@ const SidebarView = ({ chatRooms, currentUserLoginTime, handleFocus, selectedRoo
       >
         {chatRoomsList}
       </ul>
-      <div className="logout">
-        <Link to="/">Logout</Link>
-      </div>
     </div>
   );
 };
