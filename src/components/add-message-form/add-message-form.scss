@@ -6,4 +6,10 @@
   button {
     width: 200px;
   }
+
+  @media(max-width: 780px) {
+    input {
+      margin-left: 130px;
+    }
+  }
 }

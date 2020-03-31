@@ -31,4 +31,10 @@
   .user-color {
     color: $gray-dark;
   }
+
+  @media(max-width: 780px) {
+    .non-admin-message {
+      padding-left: 110px;
+    }
+  }
 }
